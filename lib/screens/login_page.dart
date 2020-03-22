@@ -8,12 +8,29 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-          child: Text(
-        "Hi",
-        textDirection: TextDirection.ltr,
-      )),
+    return Scaffold(
+      body: Column(
+        children: <Widget>[
+          getLogoImageAssert(context),
+        ],
+      ),
+    );
+  }
+
+  Widget getLogoImageAssert(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
+    AssetImage assetImage = AssetImage("assets/logo.png");
+    Image image = Image(
+      image: assetImage,
+      width: size.width * 0.8,
+      height: size.height * 0.2,
+    );
+    return Center(
+      child: Container(
+        child: image,
+        margin: EdgeInsets.only(top: size.height * 0.2),
+      ),
     );
   }
 }
