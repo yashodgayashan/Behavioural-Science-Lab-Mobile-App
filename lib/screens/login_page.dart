@@ -66,6 +66,23 @@ class _LoginState extends State<Login> {
                     ),
                   ],
                 ),
+                Row(
+                  children: <Widget>[
+                    Text(
+                      "Dont you have an account?",
+                      style: TextStyle(fontWeight: FontWeight.w600),
+                    ),
+                    GestureDetector(
+                        child: Text("Create",
+                            style: TextStyle(
+                                decoration: TextDecoration.underline,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w900)),
+                        onTap: () {
+                          // do what you need to do when "Click here" gets clicked
+                        })
+                  ],
+                ),
               ],
             ),
           )),
