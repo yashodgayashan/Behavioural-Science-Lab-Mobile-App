@@ -6,6 +6,10 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  var _formKey = GlobalKey<FormState>();
+  TextEditingController projectNameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,6 +17,7 @@ class _LoginState extends State<Login> {
       body: Column(
         children: <Widget>[
           Form(
+            key: _formKey,
               child: Expanded(
             child: ListView(
               children: <Widget>[
@@ -20,8 +25,13 @@ class _LoginState extends State<Login> {
                 Padding(
                   padding:
                       const EdgeInsets.only(left: 15.0, right: 15.0, top: 15.0),
-                  child: TextField(
-                    obscureText: true,
+                  child: TextFormField(
+                    controller: projectNameController,
+                    validator: (String value) {
+                      if (value.isEmpty) {
+                        return "Please enter the project name";
+                      }
+                    },
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.person),
                       border: OutlineInputBorder(),
@@ -32,7 +42,12 @@ class _LoginState extends State<Login> {
                 Padding(
                   padding:
                       const EdgeInsets.only(left: 15.0, right: 15.0, top: 15.0),
-                  child: TextField(
+                  child: TextFormField(
+                    controller: passwordController,validator: (String value) {
+                    if (value.isEmpty) {
+                      return "Please enter the password";
+                    }
+                  },
                     obscureText: true,
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.lock),
@@ -59,7 +74,11 @@ class _LoginState extends State<Login> {
                                 child: Icon(Icons.arrow_forward),
                                 backgroundColor: Colors.black,
                               ),
-                              onPressed: () {}),
+                              onPressed: () {setState(() {
+                                if (_formKey.currentState.validate()) {
+                                  debugPrint("Okay");
+                                }
+                              });}),
                         ],
                       ),
                       flex: 1,
