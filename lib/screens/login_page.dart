@@ -12,12 +12,12 @@ class _LoginState extends State<Login> {
       backgroundColor: Colors.lightGreen[100],
       body: Column(
         children: <Widget>[
-
           Form(
               child: Expanded(
             child: ListView(
               children: <Widget>[
                 getLogoImageAssert(context),
+                Center(child: Text("Inspector")),
                 Padding(
                   padding:
                       const EdgeInsets.only(left: 15.0, right: 15.0, top: 15.0),
