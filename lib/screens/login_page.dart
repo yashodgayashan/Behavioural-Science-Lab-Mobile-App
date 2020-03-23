@@ -17,13 +17,13 @@ class _LoginState extends State<Login> {
             child: ListView(
               children: <Widget>[
                 getLogoImageAssert(context),
-                Center(child: Text("Inspector")),
                 Padding(
                   padding:
                       const EdgeInsets.only(left: 15.0, right: 15.0, top: 15.0),
                   child: TextField(
                     obscureText: true,
                     decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.person),
                       border: OutlineInputBorder(),
                       labelText: 'Project Name',
                     ),
@@ -35,14 +35,40 @@ class _LoginState extends State<Login> {
                   child: TextField(
                     obscureText: true,
                     decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.lock),
                       border: OutlineInputBorder(),
                       labelText: 'Password',
                     ),
                   ),
-                )
+                ),
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Container(),
+                      flex: 3,
+                    ),
+                    Expanded(
+                      child: Row(
+                        children: <Widget>[
+                          Text(
+                            "Sign in",
+                            textAlign: TextAlign.end,
+                          ),
+                          IconButton(
+                              icon: CircleAvatar(
+                                child: Icon(Icons.arrow_forward),
+                                backgroundColor: Colors.black,
+                              ),
+                              onPressed: () {}),
+                        ],
+                      ),
+                      flex: 1,
+                    ),
+                  ],
+                ),
               ],
             ),
-          ))
+          )),
         ],
       ),
     );
