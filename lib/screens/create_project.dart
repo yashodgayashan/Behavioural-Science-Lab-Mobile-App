@@ -8,6 +8,8 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   TextEditingController projectNameController = TextEditingController();
   TextEditingController projectDescriptionController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,7 @@ class _SignUpState extends State<SignUp> {
       appBar: AppBar(),
       body: Container(
         child: Center(
-          child: Column(
+          child: ListView(
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.all(15.0),
@@ -49,8 +51,36 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
               ),
-              Text("Password"),
-              Text("Confirm Password"),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: TextFormField(
+                  controller: passwordController,
+                  validator: (String value) {
+                    if (value.isEmpty) {
+                      return "Please enter a password";
+                    }
+                  },
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Password',
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: TextFormField(
+                  controller: confirmPasswordController,
+                  validator: (String value) {
+                    if (value.isEmpty) {
+                      return "Please enter a password";
+                    }
+                  },
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Confirm Password',
+                  ),
+                ),
+              ),
               Align(
                 alignment: Alignment.bottomRight,
                 child: Padding(
