@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_interface_tester/screens/create_project.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -98,6 +99,9 @@ class _LoginState extends State<Login> {
                                 color: Colors.black,
                                 fontWeight: FontWeight.w900)),
                         onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context)=>SignUp())
+                          );
                           // do what you need to do when "Click here" gets clicked
                         })
                   ],
