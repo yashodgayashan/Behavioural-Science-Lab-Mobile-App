@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_interface_tester/screens/create_project.dart';
+import 'package:mobile_interface_tester/screens/menu_page.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -32,6 +33,7 @@ class _LoginState extends State<Login> {
                           if (value.isEmpty) {
                             return "Please enter the project name";
                           }
+                          return null;
                         },
                         decoration: InputDecoration(
                           prefixIcon: Icon(Icons.person),
@@ -51,6 +53,7 @@ class _LoginState extends State<Login> {
                           } else if (value.length < 8) {
                             return "Please enter minimum of 8 Charactors";
                           }
+                          return null;
                         },
                         obscureText: true,
                         decoration: InputDecoration(
@@ -83,7 +86,10 @@ class _LoginState extends State<Login> {
                                     onPressed: () {
                                       setState(() {
                                         if (_formKey.currentState.validate()) {
-                                          debugPrint("Okay");
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      Menu()));
                                         }
                                       });
                                     }),
