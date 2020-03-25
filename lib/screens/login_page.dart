@@ -57,55 +57,66 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
-                Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: Container(),
-                      flex: 3,
-                    ),
-                    Expanded(
-                      child: Row(
-                        children: <Widget>[
-                          Text(
-                            "Sign in",
-                            textAlign: TextAlign.end,
-                          ),
-                          IconButton(
-                              icon: CircleAvatar(
-                                child: Icon(Icons.arrow_forward),
-                                backgroundColor: Colors.black,
-                              ),
-                              onPressed: () {setState(() {
-                                if (_formKey.currentState.validate()) {
-                                  debugPrint("Okay");
-                                }
-                              });}),
-                        ],
+                Padding(
+                  padding: const EdgeInsets.only(top: 20,right: 10),
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: Container(),
+                        flex: 3,
                       ),
-                      flex: 1,
-                    ),
-                  ],
+                      Expanded(
+                        child: Row(
+                          children: <Widget>[
+                            Text(
+                              "Sign in",
+                              textAlign: TextAlign.end,
+                            ),
+                            IconButton(
+                                icon: CircleAvatar(
+                                  child: Icon(Icons.arrow_forward),
+                                  backgroundColor: Colors.black,
+                                ),
+                                onPressed: () {setState(() {
+                                  if (_formKey.currentState.validate()) {
+                                    debugPrint("Okay");
+                                  }
+                                });}),
+                          ],
+                        ),
+                        flex: 1,
+                      ),
+                    ],
+                  ),
                 ),
-                Row(
-                  children: <Widget>[
-                    Text(
-                      "Dont you have an account?",
-                      style: TextStyle(fontWeight: FontWeight.w600),
-                    ),
-                    GestureDetector(
-                        child: Text("Create",
-                            style: TextStyle(
-                                decoration: TextDecoration.underline,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w900)),
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context)=>SignUp())
-                          );
-                          // do what you need to do when "Click here" gets clicked
-                        })
-                  ],
+                 Padding(
+                   padding: const EdgeInsets.fromLTRB(10, 30, 10, 10),
+                   child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: Container(width: 10.0,),
+                        ),
+                        Text(
+                          "Dont you have an account?",
+                          style: TextStyle(fontWeight: FontWeight.w600),
+                        ),
+                        GestureDetector(
+                            child: Text("Create",
+                                style: TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w900)),
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context)=>SignUp())
+                              );
+                              // do what you need to do when "Click here" gets clicked
+                            }),
+                        Expanded(child: Container(width: 10.0,),),
+                      ],
+
                 ),
+                 ),
               ],
             ),
           )),

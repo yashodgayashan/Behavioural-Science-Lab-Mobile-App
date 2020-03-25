@@ -7,6 +7,7 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   TextEditingController projectNameController = TextEditingController();
+  TextEditingController projectDescriptionController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -33,18 +34,32 @@ class _SignUpState extends State<SignUp> {
                     }
                   },
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.person),
                     border: OutlineInputBorder(),
                     labelText: 'Project Name',
                   ),
                 ),
               ),
-              Text("Description"),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: TextFormField(
+                  controller: projectDescriptionController,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Description',
+                  ),
+                ),
+              ),
               Text("Password"),
               Text("Confirm Password"),
-              RaisedButton(
-                onPressed: () {},
-                child: Text("Next"),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: RaisedButton(
+                    onPressed: () {},
+                    child: Text("Next"),
+                  ),
+                ),
               ),
             ],
           ),
