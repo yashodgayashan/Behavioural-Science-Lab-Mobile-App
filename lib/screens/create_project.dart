@@ -9,7 +9,16 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text("Hi"),
+      child: Row(
+        children: <Widget>[
+          Text("Create a Project"),
+          Text("Project Name"),
+          Text("Description"),
+          Text("Password"),
+          Text("Confirm Password"),
+          Text("Next")
+        ],
+      ),
     );
   }
 }
