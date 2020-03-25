@@ -11,7 +11,8 @@ class MyApp extends StatelessWidget {
       title: 'Behavioral Science Lab',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.lightGreen
+        primarySwatch: Colors.lightGreen,
+        fontFamily: "NeuzeitSBook"
       ),
       home:Login(),
     );
