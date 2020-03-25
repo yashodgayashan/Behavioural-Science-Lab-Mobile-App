@@ -6,18 +6,20 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+
+  final String nextButtonText = "Next";
   TextEditingController projectNameController = TextEditingController();
   TextEditingController projectDescriptionController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
-  var _ProjectCreateformKey = GlobalKey<FormState>();
+  var _projectCreateformKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
       body: Form(
-        key: _ProjectCreateformKey,
+        key: _projectCreateformKey,
         child: ListView(
           children: <Widget>[
             Padding(
@@ -35,6 +37,7 @@ class _SignUpState extends State<SignUp> {
                   if (value.isEmpty) {
                     return "Please enter the project name";
                   }
+                  return null;
                 },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
@@ -55,11 +58,15 @@ class _SignUpState extends State<SignUp> {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: TextFormField(
+                obscureText: true,
                 controller: passwordController,
                 validator: (String value) {
                   if (value.isEmpty) {
                     return "Please enter a password";
+                  }else if(value.length < 8){
+                    return "Please enter minimum of 8 charactors";
                   }
+                  return null;
                 },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
@@ -70,11 +77,15 @@ class _SignUpState extends State<SignUp> {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: TextFormField(
+                obscureText: true,
                 controller: confirmPasswordController,
                 validator: (String value) {
                   if (value.isEmpty) {
                     return "Please enter a password";
+                  } else if (value != passwordController.text) {
+                    return "Please enter the same password as above";
                   }
+                  return null;
                 },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
@@ -86,19 +97,30 @@ class _SignUpState extends State<SignUp> {
               alignment: Alignment.bottomRight,
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: RaisedButton(
-                  onPressed: () {setState(() {
-                    if (_ProjectCreateformKey.currentState.validate()) {
-                      debugPrint("Okay");
-                    }
-                  });},
-                  child: Text("Next"),
-                ),
+                child: nextButton(),
               ),
             ),
           ],
         ),
       ),
     );
+  }
+
+
+  Widget nextButton(){
+    return RaisedButton(
+      onPressed: () {
+        nextButtonHandler();
+      },
+      child: Text(nextButtonText),
+    );
+  }
+
+  void nextButtonHandler(){
+    setState(() {
+      if (_projectCreateformKey.currentState.validate()) {
+        debugPrint("Okay");
+      }
+    });
   }
 }
