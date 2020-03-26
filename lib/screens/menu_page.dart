@@ -37,7 +37,7 @@ class _MenuState extends State<Menu> {
         body: TabBarView(
           children: [
             projectOverViewWidget(context),
-            Icon(Icons.directions_transit),
+            tableWidget(context),
             Icon(Icons.settings)
           ],
         ),
@@ -124,6 +124,33 @@ class _MenuState extends State<Menu> {
           debugPrint(_list.toString());
         });
       },
+    );
+  }
+
+  Widget tableWidget(BuildContext context){
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Table(
+        children: [
+          TableRow(
+              children: [
+            Column(children:[
+              Text('Participant Name')
+            ]),
+            Column(children:[
+              Text('Duration')
+            ]),
+            Column(children:[
+              Text('Delete')
+            ]),
+          ]),
+          TableRow( children: [
+            Icon(Icons.cake, ),
+            Icon(Icons.voice_chat,),
+            Icon(Icons.add_location,),
+          ]),
+        ],
+      ),
     );
   }
 }
