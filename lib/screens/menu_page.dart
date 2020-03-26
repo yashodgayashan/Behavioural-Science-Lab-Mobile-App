@@ -6,6 +6,8 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
+
+  int indexNumber = 0;
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -13,6 +15,11 @@ class _MenuState extends State<Menu> {
       child: Scaffold(
         appBar: AppBar(
           bottom: TabBar(
+            onTap: (index){
+              setState(() {
+                indexNumber = index;
+              });
+            },
             tabs: [
               Tab(
                   child: Text(
@@ -35,7 +42,9 @@ class _MenuState extends State<Menu> {
           ],
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            debugPrint("$indexNumber");
+          },
           child: Icon(Icons.add),
         ),
       ),
@@ -81,10 +90,12 @@ class _MenuState extends State<Menu> {
                 key: Key("${item}"),
                 title: Text("${item}"),
                 trailing: GestureDetector(
-                  child: IconButton(icon:Icon(Icons.menu),onPressed:  () {
-                    debugPrint("tapped on $item");
-                  },),
-
+                  child: IconButton(
+                    icon: Icon(Icons.menu),
+                    onPressed: () {
+                      debugPrint("tapped on $item");
+                    },
+                  ),
                 ),
               ))
           .toList(),
