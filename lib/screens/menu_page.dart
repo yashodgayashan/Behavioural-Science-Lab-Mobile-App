@@ -14,16 +14,22 @@ class _MenuState extends State<Menu> {
         appBar: AppBar(
           bottom: TabBar(
             tabs: [
-              Tab(child: Text("Project Overview",textAlign: TextAlign.center,)),
+              Tab(
+                  child: Text(
+                "Project Overview",
+                textAlign: TextAlign.center,
+              )),
               Tab(child: Text("Results")),
-              Tab(child: Text("Settings"),)
+              Tab(
+                child: Text("Settings"),
+              )
             ],
           ),
-          title: Text('Project Name'),
+          title: Text('Project'),
         ),
         body: TabBarView(
           children: [
-            Icon(Icons.directions_car),
+            projectOverViewWidget(context),
             Icon(Icons.directions_transit),
             Icon(Icons.settings)
           ],
@@ -35,4 +41,23 @@ class _MenuState extends State<Menu> {
       ),
     );
   }
+
+  Widget projectOverViewWidget(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        durationWidget(context),
+
+      ],
+    );
+  }
+
+  Widget durationWidget(BuildContext context) {
+    return ListTile(
+      title: Text("Duration"),
+      subtitle: Text("custom"),
+      trailing: Icon(Icons.edit),
+    );
+  }
+
+
 }
