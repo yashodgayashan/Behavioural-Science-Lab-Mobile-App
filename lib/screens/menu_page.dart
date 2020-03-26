@@ -80,7 +80,12 @@ class _MenuState extends State<Menu> {
           .map((item) => ListTile(
                 key: Key("${item}"),
                 title: Text("${item}"),
+                trailing: GestureDetector(
+                  child: IconButton(icon:Icon(Icons.menu),onPressed:  () {
+                    debugPrint("tapped on $item");
+                  },),
 
+                ),
               ))
           .toList(),
       onReorder: (int start, int current) {
